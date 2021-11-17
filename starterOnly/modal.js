@@ -30,3 +30,19 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+/////////// 2 - Implement form inputs ///////////
+
+function validate(){
+  validationFirstName();
+}
+
+//  Validation firstName
+
+function validationFirstName() {
+  const firstName = document.getElementById("first");
+  if (firstName.value.length < 2) {
+    return false;
+  } else {
+    return true;
+  }
+}
