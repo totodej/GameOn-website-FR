@@ -34,6 +34,7 @@ function closeModal() {
 
 function validate(){
   validationFirstName();
+  validationLastName();
 }
 
 //  Validation firstName
@@ -46,3 +47,15 @@ function validationFirstName() {
     return true;
   }
 }
+
+// Validation lastName
+
+function validationLastName() {
+  const lastName = document.getElementById("last");
+  if (lastName.value.length < 2) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
