@@ -36,6 +36,7 @@ function validate(){
   validationFirstName();
   validationLastName();
   validationEmail();
+  validationQuantity();
 }
 
 //  Validation firstName
@@ -70,3 +71,15 @@ function validationEmail() {
     return true;
   }
 }
+
+// Validation participation
+
+function validationQuantity() {
+  const quantity = document.getElementById("quantity");
+  if (quantity.value == "") {
+    return false;
+  } else {
+    return true;
+  }
+}
+
