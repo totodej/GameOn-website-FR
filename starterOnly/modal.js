@@ -47,8 +47,10 @@ function validate(){
 function validationFirstName() {
   const firstName = document.getElementById("first");
   if (firstName.value.length < 2) {
+    firstName.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
+    firstName.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -58,8 +60,10 @@ function validationFirstName() {
 function validationLastName() {
   const lastName = document.getElementById("last");
   if (lastName.value.length < 2) {
+    lastName.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
+    lastName.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -69,8 +73,10 @@ function validationLastName() {
 function validationEmail() {
   const email = document.getElementById("email");
   if (email.value.indexOf("@") === -1) {
+    email.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
+    email.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -79,9 +85,11 @@ function validationEmail() {
 
 function validationQuantity() {
   const quantity = document.getElementById("quantity");
-  if (quantity.value == "") {
+  if (quantity.value === "") {
+    quantity.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
+    quantity.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -97,8 +105,10 @@ function validationCity() {
     }
   }
   if (array.indexOf(true) !== 0) {
+    locations[0].parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
+    locations[0].parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -108,8 +118,10 @@ function validationCity() {
 function validationConditions() {
   const conditions = document.getElementById("checkbox1");
   if (conditions.checked === false) {
+    conditions.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
+    conditions.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
