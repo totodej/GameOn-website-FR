@@ -38,6 +38,8 @@ function validate(){
   validationEmail();
   validationQuantity();
   validationCity();
+  validationConditions();
+  return false;
 }
 
 //  Validation firstName
@@ -95,6 +97,17 @@ function validationCity() {
     }
   }
   if (array.indexOf(true) !== 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Validation conditions
+
+function validationConditions() {
+  const conditions = document.getElementById("checkbox1");
+  if (conditions.checked === false) {
     return false;
   } else {
     return true;
