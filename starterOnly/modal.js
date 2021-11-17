@@ -37,6 +37,7 @@ function validate(){
   validationLastName();
   validationEmail();
   validationQuantity();
+  validationCity();
 }
 
 //  Validation firstName
@@ -77,6 +78,23 @@ function validationEmail() {
 function validationQuantity() {
   const quantity = document.getElementById("quantity");
   if (quantity.value == "") {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Validation City option
+
+function validationCity() {
+  const locations = document.getElementsByName("location");
+  let array = [];
+  for (let i = 0; i < locations.length; i++) {
+    if (locations[i].checked === true) {
+      array.push(locations[i].checked);
+    }
+  }
+  if (array.indexOf(true) !== 0) {
     return false;
   } else {
     return true;
