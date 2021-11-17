@@ -35,6 +35,7 @@ function closeModal() {
 function validate(){
   validationFirstName();
   validationLastName();
+  validationEmail();
 }
 
 //  Validation firstName
@@ -59,3 +60,13 @@ function validationLastName() {
   }
 }
 
+// Validation email
+
+function validationEmail() {
+  const email = document.getElementById("email");
+  if (email.value.indexOf("@") === -1) {
+    return false;
+  } else {
+    return true;
+  }
+}
