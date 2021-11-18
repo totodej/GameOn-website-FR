@@ -33,18 +33,18 @@ function closeModal() {
 /////////// 2 - Implement form inputs ///////////
 
 function validate(){
-  validationFirstName();
-  validationLastName();
-  validationEmail();
-  validationQuantity();
-  validationCity();
-  validationConditions();
+  firstNameValidation();
+  lastNameValidation();
+  emailValidation();
+  quantityValidation();
+  locationValidation();
+  conditionsValidation();
   return false;
 }
 
 //  First-name Validation 
 
-function validationFirstName() {
+function firstNameValidation() {
   const firstName = document.getElementById("first");
   if (firstName.value.length < 2) {
     firstName.parentElement.setAttribute("data-error-visible", "true");
@@ -57,7 +57,7 @@ function validationFirstName() {
 
 // Last-name Validation 
 
-function validationLastName() {
+function lastNameValidation() {
   const lastName = document.getElementById("last");
   if (lastName.value.length < 2) {
     lastName.parentElement.setAttribute("data-error-visible", "true");
@@ -70,7 +70,7 @@ function validationLastName() {
 
 // Email Validation 
 
-function validationEmail() {
+function emailValidation() {
   const email = document.getElementById("email");
   if (email.value.indexOf("@") === -1) {
     email.parentElement.setAttribute("data-error-visible", "true");
@@ -83,7 +83,7 @@ function validationEmail() {
 
 // Participation Validation 
 
-function validationQuantity() {
+function QuantityValidation() {
   const quantity = document.getElementById("quantity");
   if (quantity.value === "") {
     quantity.parentElement.setAttribute("data-error-visible", "true");
@@ -96,7 +96,7 @@ function validationQuantity() {
 
 // Location Validation 
 
-function validationCity() {
+function locationValidation() {
   const locations = document.getElementsByName("location");
   let array = [];
   for (let i = 0; i < locations.length; i++) {
@@ -115,7 +115,7 @@ function validationCity() {
 
 // Conditions Validation 
 
-function validationConditions() {
+function conditionsValidation() {
   const conditions = document.getElementById("checkbox1");
   if (conditions.checked === false) {
     conditions.parentElement.setAttribute("data-error-visible", "true");
