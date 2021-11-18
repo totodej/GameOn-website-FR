@@ -73,12 +73,13 @@ function lastNameValidation() {
 
 function emailValidation() {
   const emailInput = document.getElementById("email");
-  if (emailInput.value.indexOf("@") === -1) {
-    emailInput.parentElement.setAttribute("data-error-visible", "true");
-    return false;
-  } else {
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (regex.test(emailInput.value)) {
     emailInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
+  } else {
+    emailInput.parentElement.setAttribute("data-error-visible", "true");
+    return false;
   }
 }
 
