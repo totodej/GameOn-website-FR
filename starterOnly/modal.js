@@ -92,18 +92,24 @@ function birthDateValidation(){
   if(birthDate.getFullYear() === today.getFullYear()){
     if(birthDate.getMonth() + 1 === today.getMonth() + 1){
       if(birthDate.getDate() < today.getDate()){
+        birthDateInput.parentElement.setAttribute("data-error-visible", "false");
         return true;
       }else{
+        birthDateInput.parentElement.setAttribute("data-error-visible", "true");
         return false;
       }
     }else if(birthDate.getMonth() + 1 < today.getMonth() + 1){
+      birthDateInput.parentElement.setAttribute("data-error-visible", "false");
       return true;
     }else{
+      birthDateInput.parentElement.setAttribute("data-error-visible", "true");
       return false;
     }
   }else if(birthDate.getFullYear() < today.getFullYear()){
+    birthDateInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }else{
+    birthDateInput.parentElement.setAttribute("data-error-visible", "true");
     return false;
   }
 }
