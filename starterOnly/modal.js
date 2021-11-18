@@ -42,7 +42,7 @@ function validate(){
   return false;
 }
 
-//  Validation firstName
+//  First-name Validation 
 
 function validationFirstName() {
   const firstName = document.getElementById("first");
@@ -55,7 +55,7 @@ function validationFirstName() {
   }
 }
 
-// Validation lastName
+// Last-name Validation 
 
 function validationLastName() {
   const lastName = document.getElementById("last");
@@ -68,7 +68,7 @@ function validationLastName() {
   }
 }
 
-// Validation email
+// Email Validation 
 
 function validationEmail() {
   const email = document.getElementById("email");
@@ -81,7 +81,7 @@ function validationEmail() {
   }
 }
 
-// Validation participation
+// Participation Validation 
 
 function validationQuantity() {
   const quantity = document.getElementById("quantity");
@@ -94,7 +94,7 @@ function validationQuantity() {
   }
 }
 
-// Validation City option
+// Location Validation 
 
 function validationCity() {
   const locations = document.getElementsByName("location");
@@ -113,7 +113,7 @@ function validationCity() {
   }
 }
 
-// Validation conditions
+// Conditions Validation 
 
 function validationConditions() {
   const conditions = document.getElementById("checkbox1");
