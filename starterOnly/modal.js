@@ -36,6 +36,7 @@ function validate(){
   firstNameValidation();
   lastNameValidation();
   emailValidation();
+  birthDateValidation();
   quantityValidation();
   locationValidation();
   conditionsValidation();
@@ -45,12 +46,12 @@ function validate(){
 //  First-name Validation 
 
 function firstNameValidation() {
-  const firstName = document.getElementById("first");
-  if (firstName.value.length < 2) {
-    firstName.parentElement.setAttribute("data-error-visible", "true");
+  const firstNameInput = document.getElementById("first");
+  if (firstNameInput.value.length < 2) {
+    firstNameInput.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
-    firstName.parentElement.setAttribute("data-error-visible", "false");
+    firstNameInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -58,12 +59,12 @@ function firstNameValidation() {
 // Last-name Validation 
 
 function lastNameValidation() {
-  const lastName = document.getElementById("last");
-  if (lastName.value.length < 2) {
-    lastName.parentElement.setAttribute("data-error-visible", "true");
+  const lastNameInput = document.getElementById("last");
+  if (lastNameInput.value.length < 2) {
+    lastNameInput.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
-    lastName.parentElement.setAttribute("data-error-visible", "false");
+    lastNameInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -71,25 +72,51 @@ function lastNameValidation() {
 // Email Validation 
 
 function emailValidation() {
-  const email = document.getElementById("email");
-  if (email.value.indexOf("@") === -1) {
-    email.parentElement.setAttribute("data-error-visible", "true");
+  const emailInput = document.getElementById("email");
+  if (emailInput.value.indexOf("@") === -1) {
+    emailInput.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
-    email.parentElement.setAttribute("data-error-visible", "false");
+    emailInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
+  }
+}
+
+// Birthdate Validation
+
+function birthDateValidation(){
+  const birthDateInput = document.getElementById("birthdate");
+  let birthDate = new Date(birthDateInput.value);
+  let today = new Date();
+  
+  if(birthDate.getFullYear() === today.getFullYear()){
+    if(birthDate.getMonth() + 1 === today.getMonth() + 1){
+      if(birthDate.getDate() < today.getDate()){
+        return true;
+      }else{
+        return false;
+      }
+    }else if(birthDate.getMonth() + 1 < today.getMonth() + 1){
+      return true;
+    }else{
+      return false;
+    }
+  }else if(birthDate.getFullYear() < today.getFullYear()){
+    return true;
+  }else{
+    return false;
   }
 }
 
 // Participation Validation 
 
-function QuantityValidation() {
-  const quantity = document.getElementById("quantity");
-  if (quantity.value === "") {
-    quantity.parentElement.setAttribute("data-error-visible", "true");
+function quantityValidation() {
+  const quantityInput = document.getElementById("quantity");
+  if (quantityInput.value === "") {
+    quantityInput.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
-    quantity.parentElement.setAttribute("data-error-visible", "false");
+    quantityInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -97,18 +124,18 @@ function QuantityValidation() {
 // Location Validation 
 
 function locationValidation() {
-  const locations = document.getElementsByName("location");
+  const locationsInput = document.getElementsByName("location");
   let array = [];
-  for (let i = 0; i < locations.length; i++) {
-    if (locations[i].checked === true) {
-      array.push(locations[i].checked);
+  for (let i = 0; i < locationsInput.length; i++) {
+    if (locationsInput[i].checked === true) {
+      array.push(locationsInput[i].checked);
     }
   }
   if (array.indexOf(true) !== 0) {
-    locations[0].parentElement.setAttribute("data-error-visible", "true");
+    locationsInput[0].parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
-    locations[0].parentElement.setAttribute("data-error-visible", "false");
+    locationsInput[0].parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
@@ -116,12 +143,12 @@ function locationValidation() {
 // Conditions Validation 
 
 function conditionsValidation() {
-  const conditions = document.getElementById("checkbox1");
-  if (conditions.checked === false) {
-    conditions.parentElement.setAttribute("data-error-visible", "true");
+  const conditionsInput = document.getElementById("checkbox1");
+  if (conditionsInput.checked === false) {
+    conditionsInput.parentElement.setAttribute("data-error-visible", "true");
     return false;
   } else {
-    conditions.parentElement.setAttribute("data-error-visible", "false");
+    conditionsInput.parentElement.setAttribute("data-error-visible", "false");
     return true;
   }
 }
