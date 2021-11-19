@@ -40,7 +40,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+            <form name="reserve" action="index.html" method="get" onsubmit="return validate(event);">
               <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom." data-error-visible="false">
                 <label for="first">Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first"/>
@@ -86,6 +86,10 @@
               <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
             </form>
           </div>
+          <div class="modal-body_confirmation">
+            <p>Merci !<br>Votre réservation a été reçue.</p>
+            <input type="button" class="btn-close" value="Fermer"/>
+          </div>  
         </div>
       </div>
     </main>
