@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  const x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -11,6 +11,18 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const modalBody = document.getElementsByClassName("modal-body");
+const btnCloseX = document.getElementsByClassName("close");
+const modalBodyConfirmation = document.getElementsByClassName("modal-body_confirmation");
+const btnClose = document.getElementsByClassName("btn-close");
+const form = document.getElementsByTagName("form");
+const firstNameInput = document.getElementById("first");
+const lastNameInput = document.getElementById("last");
+const emailInput = document.getElementById("email");
+const birthDateInput = document.getElementById("birthdate");
+const quantityInput = document.getElementById("quantity");
+const locationsInput = document.getElementsByName("location");
+const conditionsInput = document.getElementById("checkbox1");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,19 +32,24 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-/////////// 1 - TODO : close modal ///////////
-
-const closeBtn = document.querySelector(".close");
-
-closeBtn.addEventListener("click", closeModal);
-
+// Close Modal with the button X
+btnCloseX[0].addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-/////////// 2 - Implement form inputs ///////////
+// Close Modal with the button on the Confirmation Modal
+btnClose[0].addEventListener("click", closeConfirmationModal);
+function closeConfirmationModal(){
+  disappearConfirmation();
+  appearForm();
+  closeModal();
+  form[0].reset();
+}
 
-function validate(){
+// Form Validation 
+function validate(event){
+  event.preventDefault();
   firstNameValidation();
   lastNameValidation();
   emailValidation();
@@ -40,98 +57,137 @@ function validate(){
   quantityValidation();
   locationValidation();
   conditionsValidation();
-  return false;
+
+  if(firstNameValidation() === true && lastNameValidation() === true && emailValidation() === true && birthDateValidation() === true && quantityValidation() === true && locationValidation() === true && conditionsValidation() === true){
+    disappearForm();
+    appearConfirmation();
+  }
+}
+
+// Functions to appear and to disappear
+function appearConfirmation(){
+  modalBodyConfirmation[0].style.display = "block";
+}
+
+function disappearConfirmation(){
+  modalBodyConfirmation[0].style.display = "none";
+}
+
+function appearForm(){
+  modalBody[0].style.display = "block";
+}
+
+function disappearForm(){
+  modalBody[0].style.display = "none";
+}
+
+// isValid Function
+function isValid(input){
+  input.parentElement.setAttribute("data-error-visible", "false");
+}
+
+// Error Message Function
+function errorMessage(input){
+  input.parentElement.setAttribute("data-error-visible", "true");
 }
 
 //  First-name Validation 
-
 function firstNameValidation() {
-  const firstNameInput = document.getElementById("first");
   if (firstNameInput.value.length < 2) {
-    firstNameInput.parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(firstNameInput);
     return false;
   } else {
-    firstNameInput.parentElement.setAttribute("data-error-visible", "false");
+    isValid(firstNameInput);
     return true;
   }
 }
+
+firstNameInput.addEventListener("input", function(){
+  isValid(firstNameInput);
+});
 
 // Last-name Validation 
-
 function lastNameValidation() {
-  const lastNameInput = document.getElementById("last");
   if (lastNameInput.value.length < 2) {
-    lastNameInput.parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(lastNameInput);
     return false;
   } else {
-    lastNameInput.parentElement.setAttribute("data-error-visible", "false");
+    isValid(lastNameInput);
     return true;
   }
 }
+
+lastNameInput.addEventListener("input", function(){
+  isValid(lastNameInput);
+});
 
 // Email Validation 
-
 function emailValidation() {
-  const emailInput = document.getElementById("email");
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (regex.test(emailInput.value)) {
-    emailInput.parentElement.setAttribute("data-error-visible", "false");
+    isValid(emailInput);
     return true;
   } else {
-    emailInput.parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(emailInput);
     return false;
   }
 }
 
-// Birthdate Validation
+emailInput.addEventListener("input", function(){
+  isValid(emailInput);
+});
 
+// Birthdate Validation
 function birthDateValidation(){
-  const birthDateInput = document.getElementById("birthdate");
   let birthDate = new Date(birthDateInput.value);
   let today = new Date();
   
   if(birthDate.getFullYear() === today.getFullYear()){
     if(birthDate.getMonth() + 1 === today.getMonth() + 1){
       if(birthDate.getDate() < today.getDate()){
-        birthDateInput.parentElement.setAttribute("data-error-visible", "false");
+        isValid(birthDateInput);
         return true;
       }else{
-        birthDateInput.parentElement.setAttribute("data-error-visible", "true");
+        errorMessage(birthDateInput);
         return false;
       }
     }else if(birthDate.getMonth() + 1 < today.getMonth() + 1){
-      birthDateInput.parentElement.setAttribute("data-error-visible", "false");
+      isValid(birthDateInput);
       return true;
     }else{
-      birthDateInput.parentElement.setAttribute("data-error-visible", "true");
+      errorMessage(birthDateInput);
       return false;
     }
   }else if(birthDate.getFullYear() < today.getFullYear()){
-    birthDateInput.parentElement.setAttribute("data-error-visible", "false");
+    isValid(birthDateInput);
     return true;
   }else{
-    birthDateInput.parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(birthDateInput);
     return false;
   }
 }
 
-// Participation Validation 
+birthDateInput.addEventListener("input", function(){
+  isValid(birthDateInput);
+});
 
+// Participation Validation 
 function quantityValidation() {
-  const quantityInput = document.getElementById("quantity");
   if (quantityInput.value === "") {
-    quantityInput.parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(quantityInput);
     return false;
   } else {
-    quantityInput.parentElement.setAttribute("data-error-visible", "false");
+    isValid(quantityInput);
     return true;
   }
 }
 
-// Location Validation 
+quantityInput.addEventListener("input", function(){
+  isValid(quantityInput);
+});
 
+// Location Validation 
 function locationValidation() {
-  const locationsInput = document.getElementsByName("location");
   let array = [];
   for (let i = 0; i < locationsInput.length; i++) {
     if (locationsInput[i].checked === true) {
@@ -139,24 +195,32 @@ function locationValidation() {
     }
   }
   if (array.indexOf(true) !== 0) {
-    locationsInput[0].parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(locationsInput[0]);
     return false;
   } else {
-    locationsInput[0].parentElement.setAttribute("data-error-visible", "false");
+    isValid(locationsInput[0]);
     return true;
   }
+}
+
+for(let i = 0; i < locationsInput.length; i++){
+  locationsInput[i].addEventListener("change", function(){
+    isValid(locationsInput[i]);
+  });
 }
 
 // Conditions Validation 
-
 function conditionsValidation() {
-  const conditionsInput = document.getElementById("checkbox1");
   if (conditionsInput.checked === false) {
-    conditionsInput.parentElement.setAttribute("data-error-visible", "true");
+    errorMessage(conditionsInput);
     return false;
   } else {
-    conditionsInput.parentElement.setAttribute("data-error-visible", "false");
+    isValid(conditionsInput);
     return true;
   }
 }
+
+conditionsInput.addEventListener("change", function(){
+  isValid(conditionsInput);
+});
 
