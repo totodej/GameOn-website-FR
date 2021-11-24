@@ -30,6 +30,11 @@ img {
   padding-right: 1rem;
 }
 
+.header-logo img {
+  width: auto;
+  height: auto;
+}
+
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -68,12 +73,6 @@ img {
 .topnav .icon {
   display: none;
   color: red;
-}
-
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
 }
 
 main {
@@ -202,7 +201,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -467,7 +466,7 @@ footer {
   margin: 0 20px;
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 1120px) {
   .topnav a {
     display: none;
   }
@@ -475,7 +474,6 @@ footer {
     float: right;
     display: block;
   }
-
   .topnav.responsive {
     position: relative;
   }
@@ -489,6 +487,9 @@ footer {
     display: block;
     text-align: left;
   }
+}
+
+@media screen and (max-width: 992px) {
   .hero-headline {
     font-size: 4.5rem;
   }
@@ -502,9 +503,6 @@ footer {
     padding-left: 8px;
     padding-top: 15px;
     width: 140px;
-  }
-  .content {
-    margin: 17% auto;
   }
   .hero-section {
     display: block;
@@ -539,14 +537,14 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin : 0px 0px 30px;
+    margin: 0px 0px 30px;
     text-align: center;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .content {
-    margin: 17% auto;
+  .topnav a {
+    display: none;
   }
   .hero-section {
     margin-bottom: 0px;
@@ -558,6 +556,13 @@ footer {
   .hero-text {
     width: unset;
     font-size: 0.9rem;
+  }
+  .bground {
+    top: 70px;
+  }
+  .content {
+    margin: 0 auto;
+    margin-bottom: 70px;
   }
 }
 
