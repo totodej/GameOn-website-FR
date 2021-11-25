@@ -37,23 +37,24 @@ function validate(event) {
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  body.style.position = "fixed";
 }
 
 // Functions to appear and to disappear
 function appearConfirmation() {
-  modalBodyConfirmation[0].style.display = "block";
+  modalBodyConfirmation.style.display = "block";
 }
 
 function disappearConfirmation() {
-  modalBodyConfirmation[0].style.display = "none";
+  modalBodyConfirmation.style.display = "none";
 }
 
 function appearForm() {
-  modalBody[0].style.display = "block";
+  modalBody.style.display = "block";
 }
 
 function disappearForm() {
-  modalBody[0].style.display = "none";
+  modalBody.style.display = "none";
 }
 
 // isValid Function
@@ -71,12 +72,13 @@ function closeConfirmationModal() {
   disappearConfirmation();
   appearForm();
   closeModal();
-  form[0].reset();
+  form.reset();
 }
 
 // Close Modal with the button X
 function closeModal() {
   modalbg.style.display = "none";
+  body.style.position = "initial";
 }
 
 //  First-name Validation
@@ -188,13 +190,14 @@ function conditionsValidation() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalBody = document.getElementsByClassName("modal-body");
-const btnCloseX = document.getElementsByClassName("close");
-const modalBodyConfirmation = document.getElementsByClassName(
+const body = document.querySelector("body");
+const modalBody = document.getElementById("modal-body");
+const btnCloseX = document.getElementById("close");
+const modalBodyConfirmation = document.getElementById(
   "modal-body_confirmation"
 );
-const btnClose = document.getElementsByClassName("btn-close");
-const form = document.getElementsByTagName("form");
+const btnClose = document.getElementById("btn-close");
+const form = document.getElementById("form");
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
@@ -207,8 +210,8 @@ const conditionsInput = document.getElementById("checkbox1");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Events
-btnCloseX[0].addEventListener("click", closeModal);
-btnClose[0].addEventListener("click", closeConfirmationModal);
+btnCloseX.addEventListener("click", closeModal);
+btnClose.addEventListener("click", closeConfirmationModal);
 firstNameInput.addEventListener("input", function () {
   isValid(firstNameInput);
 });

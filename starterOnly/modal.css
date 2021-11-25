@@ -155,12 +155,12 @@ main {
   padding-top: 10px;
 }
 
-.modal-body {
+#modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
 
-.modal-body_confirmation {
+#modal-body_confirmation {
   display: none;
   height: 788px;
   justify-content: center;
@@ -170,7 +170,7 @@ main {
   padding: 15px;
 }
 
-.modal-body_confirmation > p {
+#modal-body_confirmation > p {
   padding: 328px 0px;
 }
 
@@ -282,7 +282,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+#close {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -292,8 +292,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+#close:before,
+#close:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -301,15 +301,15 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+#close:before {
   transform: rotate(45deg);
 }
-.close:after {
+#close:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
 .btn-signup,
-.btn-close {
+#btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
