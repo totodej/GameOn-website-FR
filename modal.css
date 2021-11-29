@@ -37,7 +37,10 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  padding: 3.5%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
 }
 .header-logo {
   float: left;
@@ -132,7 +135,7 @@ main {
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 31;
   left: 0;
   top: 0;
   height: 100%;
@@ -543,11 +546,19 @@ footer {
 }
 
 @media screen and (max-width: 576px) {
+  .topnav {
+    z-index: 30;
+    width: 100%;
+  }
   .topnav a {
     display: none;
   }
   .hero-section {
     margin-bottom: 0px;
+  }
+  .hero-content {
+    padding: unset;
+    min-width: auto;
   }
   .hero-headline {
     font-size: 2.5rem;
