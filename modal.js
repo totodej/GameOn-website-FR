@@ -37,7 +37,7 @@ function validate(event) {
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  body.style.position = "fixed";
+  header.style.position = "fixed";
 }
 
 // Functions to appear and to disappear
@@ -78,7 +78,7 @@ function closeConfirmationModal() {
 // Close Modal with the button X
 function closeModal() {
   modalbg.style.display = "none";
-  body.style.position = "initial";
+  header.style.position = "initial";
 }
 
 //  First-name Validation
@@ -190,7 +190,7 @@ function conditionsValidation() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const body = document.querySelector("body");
+const header = document.querySelector("header");
 const modalBody = document.getElementById("modal-body");
 const btnCloseX = document.getElementById("close");
 const modalBodyConfirmation = document.getElementById(
